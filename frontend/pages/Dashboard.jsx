@@ -22,18 +22,25 @@ const Dashboard = () => {
   }, []);
 
   const groupedTasks = useMemo(() => {
+    if (!Array.isArray(projects)) {
+      console.error('Projects is not an array:', projects);
+      return []; // Return an empty array if projects is not an array
+    }
+
     return projects.map((project) => ({
       ...project,
-      tasks: tasks.filter((task) => task.project?._id === project._id || task.project === project._id)
+      tasks: tasks.filter(
+        (task) => task.project?._id === project._id || task.project === project._id
+      ),
     }));
   }, [projects, tasks]);
 
   return (
     <main className="container">
       <h2>Dashboard</h2>
-      {projectLoading ? <p>Loading...</p> : null}
-      {projectError ? <p>{projectError}</p> : null}
-      {taskError ? <p>{taskError}</p> : null}
+      {(projectLoading || taskError || projectError) && (
+        <p>{projectError || taskError || (projectLoading && 'Loading...')}</p>
+      )}
 
       <section className="grid">
         {groupedTasks.map((project) => (
