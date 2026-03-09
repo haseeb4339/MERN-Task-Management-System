@@ -10,13 +10,15 @@ COPY package.json .
 ### install the requirements
 RUN npm install
 
+#### copy the source code file
+
+COPY . .
+
 ### Expose the port
 
 EXPOSE 5000
 
-#### copy the source code file
 
-COPY . .
 
 #### give the command 
 
