@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5001; // Use port 5001 for backend
 
 // CORS configuration
 const corsOptions = {
-  origin: 'http://frontend:5000', // Use frontend container name
+  origin: ['http://frontend:5000', 'http://localhost:5000'], // Use frontend container name
   methods: 'GET, POST', // You can add other methods like PUT, DELETE if needed
 };
 
