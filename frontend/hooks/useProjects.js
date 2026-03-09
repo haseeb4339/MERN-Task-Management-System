@@ -10,6 +10,10 @@ const useProjects = () => {
     try {
       setLoading(true);
       const { data } = await projectService.getProjects();
+      console.log('Fetched projects:', data);  // Check the data in the console
+      if (!Array.isArray(data)) {
+        throw new Error('The fetched data is not an array.');
+      }
       setProjects(data);
       setError('');
     } catch (err) {
