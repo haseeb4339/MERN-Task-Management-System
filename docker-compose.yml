@@ -1,0 +1,55 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+
+    ports:
+      - "5000:5000"
+
+    env_file:
+      - ./frontend/.env
+
+    networks:
+      - mern
+
+  
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    ports:
+      - "5001:5001"
+
+    env_file:
+      - ./backend/.env
+    
+    networks:
+      - mern
+
+    depends_on:
+      - mongodb
+
+  
+  mongodb:
+    image: mongo
+
+    ports:
+      - "27017:27017"
+
+    networks:
+      - mern
+
+    volumes:
+      - mongo-data:/data/db
+
+
+networks:
+  mern:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local
+
