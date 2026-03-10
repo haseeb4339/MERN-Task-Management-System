@@ -96,7 +96,7 @@ MONGO_URI=mongodb://localhost:27017/management_app
 Create `frontend/.env`:
 
 ```env
-VITE_API_BASE_URL=http://localhost:5000/api
+VITE_API_BASE_URL=http://localhost:5001/api
 ```
 
 ## API Usage Examples
@@ -105,7 +105,7 @@ VITE_API_BASE_URL=http://localhost:5000/api
 
 #### Create Project
 ```bash
-curl -X POST http://localhost:5000/api/projects \
+curl -X POST http://localhost:5001/api/projects \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Website Revamp",
@@ -115,17 +115,17 @@ curl -X POST http://localhost:5000/api/projects \
 
 #### Get All Projects
 ```bash
-curl http://localhost:5000/api/projects
+curl http://localhost:5001/api/projects
 ```
 
 #### Get Project By ID
 ```bash
-curl http://localhost:5000/api/projects/<projectId>
+curl http://localhost:5001/api/projects/<projectId>
 ```
 
 #### Update Project
 ```bash
-curl -X PUT http://localhost:5000/api/projects/<projectId> \
+curl -X PUT http://localhost:5001/api/projects/<projectId> \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Website Revamp - Phase 2",
@@ -135,14 +135,14 @@ curl -X PUT http://localhost:5000/api/projects/<projectId> \
 
 #### Delete Project
 ```bash
-curl -X DELETE http://localhost:5000/api/projects/<projectId>
+curl -X DELETE http://localhost:5001/api/projects/<projectId>
 ```
 
 ### Tasks
 
 #### Create Task
 ```bash
-curl -X POST http://localhost:5000/api/tasks \
+curl -X POST http://localhost:5001/api/tasks \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Build project dashboard",
@@ -156,17 +156,17 @@ curl -X POST http://localhost:5000/api/tasks \
 
 #### Get All Tasks
 ```bash
-curl http://localhost:5000/api/tasks
+curl http://localhost:5001/api/tasks
 ```
 
 #### Get Tasks By Project
 ```bash
-curl http://localhost:5000/api/tasks/project/<projectId>
+curl http://localhost:5001/api/tasks/project/<projectId>
 ```
 
 #### Update Task
 ```bash
-curl -X PUT http://localhost:5000/api/tasks/<taskId> \
+curl -X PUT http://localhost:5001/api/tasks/<taskId> \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Build project dashboard",
@@ -180,7 +180,7 @@ curl -X PUT http://localhost:5000/api/tasks/<taskId> \
 
 #### Delete Task
 ```bash
-curl -X DELETE http://localhost:5000/api/tasks/<taskId>
+curl -X DELETE http://localhost:5001/api/tasks/<taskId>
 ```
 
 
@@ -215,7 +215,7 @@ npm install
 npm run dev
 ```
 
-Backend runs at `http://localhost:5000`.
+Backend runs at `http://localhost:5001`.
 
 ### 3) Run Frontend
 
@@ -225,27 +225,7 @@ npm install
 npm run dev
 ```
 
-Frontend runs at the Vite URL (typically `http://localhost:5173`).
-
-## Notes
-
-- No Dockerfile, docker-compose, or Kubernetes manifests are included.
-- This setup is intentionally local-run first to support later containerization practice.
+Frontend runs at the Vite URL (typically `http://localhost:5000`).
 
 
-## Direct Main Branch Commit Flow
-
-If you want changes to appear on GitHub `main` immediately (without opening a PR), run:
-
-```bash
-git checkout main
-git pull origin main
-git merge work
-git push origin main
-```
-
-If your local repository has no remote configured, add it first:
-
-```bash
-git remote add origin https://github.com/<your-username>/MERN-Task-Management-System.git
 ```
